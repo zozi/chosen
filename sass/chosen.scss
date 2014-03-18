@@ -29,19 +29,19 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
   &.chosen-with-drop .chosen-drop {
     left: 0;
   }
-  a{
+  a {
     cursor: pointer;
   }
 }
 /* @end */
 
 /* @group Single Chosen */
-.chosen-container-single{
+.chosen-container-single {
   .chosen-single {
     position: relative;
     display: block;
     overflow: hidden;
-    padding: 0 0 0 8px;
+    padding: 0 26px 0 8px;
     height: 23px;
     border: 1px solid #aaa;
     border-radius: 5px;
@@ -53,21 +53,16 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     text-decoration: none;
     white-space: nowrap;
     line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .chosen-default {
     color: #999;
   }
-  .chosen-single span {
-    display: block;
-    overflow: hidden;
-    margin-right: 26px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  .chosen-single-with-deselect {
+    padding-right: 46px;
   }
-  .chosen-single-with-deselect span {
-    margin-right: 38px;
-  }
-  .chosen-single abbr {
+  .search-choice-close {
     position: absolute;
     top: 6px;
     right: 26px;
@@ -79,9 +74,6 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     &:hover {
       background-position: -42px -10px;
     }
-  }
-  &.chosen-disabled .chosen-single abbr:hover {
-    background-position: -42px -10px;
   }
   .chosen-single div {
     position: absolute;
@@ -141,7 +133,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
   padding: 0 0 0 4px;
   max-height: 240px;
   -webkit-overflow-scrolling: touch;
-  li {
+  > li {
     display: none;
     margin: 0;
     padding: 5px 6px;
@@ -176,7 +168,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     &.group-option {
       padding-left: 15px;
     }
-    em {
+    > em {
       font-style: normal;
       text-decoration: underline;
     }
@@ -185,7 +177,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
 /* @end */
 
 /* @group Multi Chosen */
-.chosen-container-multi{
+.chosen-container-multi {
   .chosen-choices {
     position: relative;
     overflow: hidden;
@@ -200,7 +192,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     @include background-image(linear-gradient(#eee 1%, #fff 15%));
     cursor: text;
   }
-  .chosen-choices li {
+  .chosen-choices > li {
     float: left;
     list-style: none;
     &.search-field {
@@ -283,12 +275,12 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
 /* @end */
 
 /* @group Active  */
-.chosen-container-active{
+.chosen-container-active {
   .chosen-single {
     border: 1px solid #5897fb;
     box-shadow: 0 0 5px rgba(#000,.3);
   }
-  &.chosen-with-drop{
+  &.chosen-with-drop {
     .chosen-single {
       border: 1px solid #aaa;
       -moz-border-radius-bottomright: 0;
@@ -320,11 +312,11 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
 .chosen-disabled {
   opacity: 0.5 !important;
   cursor: default;
-  .chosen-single {
+  .chosen-single, .chosen-choices, li.search-field input[type="text"].search-choice-close {
     cursor: default;
   }
-  .chosen-choices .search-choice .search-choice-close {
-    cursor: default;
+  .search-choice-close:hover {
+    background-position: -42px 1px !important;
   }
 }
 /* @end */
@@ -334,21 +326,16 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
   text-align: right;
   .chosen-single {
     overflow: visible;
-    padding: 0 8px 0 0;
+    padding: 0 8px 0 26px;
   }
-  .chosen-single span {
-    margin-right: 0;
-    margin-left: 26px;
-    direction: rtl;
-  }
-  .chosen-single-with-deselect span {
-    margin-left: 38px;
+  .chosen-single-with-deselect {
+    padding-left: 46px;
   }
   .chosen-single div {
     right: auto;
     left: 3px;
   }
-  .chosen-single abbr {
+  .search-choice-close {
     right: auto;
     left: 26px;
   }
@@ -387,11 +374,11 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
     @include background($chosen-sprite no-repeat -30px -20px);
     direction: rtl;
   }
-  &.chosen-container-single{
+  &.chosen-container-single {
     .chosen-single div b {
       background-position: 6px 2px;
     }
-    &.chosen-with-drop{
+    &.chosen-with-drop {
       .chosen-single div b {
         background-position: -12px 2px;
       }
@@ -404,7 +391,7 @@ $chosen-sprite-retina: image-url('chosen-sprite@2x.png') !default;
 /* @group Retina compatibility */
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 144dpi)  {
   .chosen-rtl .chosen-search input[type="text"],
-  .chosen-container-single .chosen-single abbr,
+  .chosen-container-single .search-choice-close,
   .chosen-container-single .chosen-single div b,
   .chosen-container-single .chosen-search input[type="text"],
   .chosen-container-multi .chosen-choices .search-choice .search-choice-close,
