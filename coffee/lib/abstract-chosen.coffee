@@ -140,7 +140,7 @@ class AbstractChosen
           results_group = @results_data[option.group_array_index]
           results += 1 if results_group.active_options is 0 and results_group.search_match
           results_group.active_options += 1
-                
+
         unless option.group and not @group_search
 
           option.search_text = if option.group then option.label else option.html
@@ -154,7 +154,7 @@ class AbstractChosen
               option.search_text = text.substr(0, startpos) + '<em>' + text.substr(startpos)
 
             results_group.group_match = true if results_group?
-          
+
           else if option.group_array_index? and @results_data[option.group_array_index].search_match
             option.search_match = true
 
@@ -184,7 +184,7 @@ class AbstractChosen
     @selected_option_count = 0
     for option in @form_field.options
       @selected_option_count += 1 if option.selected
-    
+
     return @selected_option_count
 
   choices_click: (evt) ->
@@ -222,15 +222,15 @@ class AbstractChosen
 
     return true
 
-  # class methods and variables ============================================================ 
+  # class methods and variables ============================================================
 
   @browser_is_supported: ->
     if window.navigator.appName == "Microsoft Internet Explorer"
       return document.documentMode >= 8
-    if /iP(od|hone)/i.test(window.navigator.userAgent)
+    if /iP(ad|od|hone)/i.test(window.navigator.userAgent)
       return false
     if /Android/i.test(window.navigator.userAgent)
-      return false if /Mobile/i.test(window.navigator.userAgent)
+      return false
     return true
 
   @default_multiple_text: "Select Some Options"
